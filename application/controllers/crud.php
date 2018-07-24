@@ -1,4 +1,5 @@
 <?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Crud extends CI_Controller
 {
@@ -6,15 +7,35 @@ class Crud extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper(array('url')); 
         $this->load->model('m_data');
-        $this->load->helper('url'); 
+        // $this->load->helper('url'); 
     }
     
-    public function index() {
+    // public function index() {
+    //     $data['title'] = "Menampilkan data tabel";
+    //     $data['judul'] = "Membuat CRUD dengan CodeIgniter";
+    //     $data['user'] = $this->m_data->ambil_data2()->result();
+    //     $this->load->view('v_tampil', $data);  
+    // }
+
+    
+    public function index()
+    {
         $data['title'] = "Menampilkan data tabel";
         $data['judul'] = "Membuat CRUD dengan CodeIgniter";
-        $data['user'] = $this->m_data->ambil_data2()->result();
-        $this->load->view('v_tampil', $data);  
+        $this->load->database();
+        $jml_data = $this->m_data->jml_data();
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'crud/index/';
+        $config['total_rows'] = $jml_data;
+        $config['per_page'] = 10;
+
+        $from = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+        $data['user'] = $this->m_data->data($config['per_page'], $from);
+        $this->load->view('v_tampil', $data);
+        //$this->load->view('welcome_message');
     }
 
     public function tambah() {

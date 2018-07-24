@@ -7,8 +7,7 @@ class M_data extends CI_Model
         return $this->db->get('masuk');
     }
 
-    function ambil_data2()
-    {
+    function ambil_data2() {
         return $this->db->get('tb_masuk');
     }
 
@@ -16,8 +15,7 @@ class M_data extends CI_Model
         $this->db->insert($table, $data); 
     }
 
-    function hapus_data($where, $table)
-    {
+    function hapus_data($where, $table) {
         $this->db->where($where);
         $this->db->delete($table);
     }
@@ -38,4 +36,8 @@ class M_data extends CI_Model
     function jml_data() {
         return $this->db->get('tb_masuk')->num_rows();
     }
+
+    // function jml_data2() {
+    //     return $this->db->get('tb_masuk')->num_rows();
+    // }
 }

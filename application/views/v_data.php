@@ -26,9 +26,9 @@
 
 		<tr>
 			<td><?php echo $no++; ?></td>
-			<td><?php echo $u->nama ?></td>
-			<td><?php echo $u->alamat ?></td>
-			<td><?php echo $u->pekerjaan ?></td>
+			<td><?php echo $u->nama; ?></td>
+			<td><?php echo $u->alamat; ?></td>
+			<td><?php echo $u->pekerjaan; ?></td>
 		</tr>
 	<?php } ?>
 	</table>

@@ -20,9 +20,9 @@ class Welcome extends CI_Controller {
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'welcome/index/';
 		$config['total_rows'] = $jml_data;
-		$config['per_page'] = 5;
+		$config['per_page'] = 10;
 
-		$from = $this->uri->segment(4);
+		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);
 		$data['user'] = $this->m_data->data($config['per_page'], $from);
 		$this->load->view('v_data', $data);

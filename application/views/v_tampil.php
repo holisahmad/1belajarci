@@ -17,14 +17,16 @@
 			<th>Action</th>
 		</tr>
 		<?php 
-        $no = 1;
+        //$no = 1;
+        $no = $this->uri->segment('3') + 1;
         foreach ($user as $u) {
         ?>
+		
 		<tr>
-			<td><?php echo $no++ ?></td>
-			<td><?php echo $u->nama ?></td>
-			<td><?php echo $u->alamat ?></td>
-			<td><?php echo $u->pekerjaan ?></td>
+			<td><?php echo $no++; ?></td>
+			<td><?php echo $u->nama; ?></td>
+			<td><?php echo $u->alamat; ?></td>
+			<td><?php echo $u->pekerjaan; ?></td>
 			<td>
 			<?php echo anchor('crud/edit/' . $u->id, 'Edit'); ?>
             <?php echo anchor('crud/hapus/' . $u->id, 'Hapus'); ?>
@@ -32,5 +34,10 @@
 		</tr>
 		<?php } ?>
 	</table>
+	<br>
+<?php 
+$data =  $this->pagination->create_links();
+echo "<div align='center'>".$data."</div>";
+?>
 </body>
 </html>
